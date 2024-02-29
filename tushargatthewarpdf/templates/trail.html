@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Div Action Logger</title>
+</head>
+<body>
+
+<!-- Example div elements with data-role attribute -->
+<div class="parent-div">
+  <div data-role="button" class="action-div">Button 1</div>
+  <div data-role="link" class="action-div">Link 1</div>
+  <div data-role="image" class="action-div">Image 1</div>
+</div>
+
+<!-- Additional div elements without explicit data-role attribute -->
+<div class="parent-div">
+  <div class="action-div">Generic Div 1</div>
+  <div class="action-div">Generic Div 2</div>
+</div>
+
+<script>
+// Function to log data-role attribute on mouseover or click
+function logDataRole(event) {
+  const target = event.target;
+  const dataRole = findDataRole(target);
+
+  console.log(`User action (${event.type}) on element with data-role: ${dataRole || 'No data-role'}`);
+}
+
+// Function to find the data-role attribute on the target or its ancestors
+function findDataRole(element) {
+  while (element) {
+    const role = element.getAttribute('data-role');
+    if (role) {
+      return role;
+    }
+    element = element.parentElement;
+  }
+  return null;
+}
+
+// Get all div elements
+const allDivs = document.querySelectorAll('div');
+
+// Attach event listeners to each div
+allDivs.forEach(div => {
+  div.addEventListener('mouseover', logDataRole);
+  div.addEventListener('click', logDataRole);
+});
+</script>
+
+</body>
+</html>

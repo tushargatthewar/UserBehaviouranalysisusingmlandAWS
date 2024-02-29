@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2PLTZY077K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2PLTZY077K');
+    </script>
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "kmxj5v7qmh");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample HTML Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #f9f9f9;
+            /* Blue background color */
+            color: #060606;
+            /* White text color */
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav {
+            background-color: #3498db;
+            /* Blue background color */
+            color: #fff;
+            /* White text color */
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav a {
+            color: #fff;
+            /* White text color for menu items */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .flex-item {
+            width: 200px;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+        }
+
+        .flex-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .big-box {
+            width: 600px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+        }
+
+        .small-box {
+            width: 100px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+        }
+
+        .small-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            /* Darker background color */
+            color: #fff;
+            /* White text color */
+            padding: 30px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .footer-item {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .footer-item h3 {
+            color: #3498db;
+            /* Blue color for headings */
+        }
+
+        .image-section {
+            width: 100%;
+            max-height: 200px;
+            /* Adjust the maximum height as needed */
+            overflow: hidden;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Bhuvan Portal</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="{{ url_for('admin') }}">Contact</a>
+        <a href="{{ url_for('login') }}" id="adminLoginBtn">Admin Login</a>
+    </nav>
+    <div class="image-section">
+        <!-- Add your single image here -->
+        <img src="static/BhuvanGenesis2.jpg" alt="Image">
+    </div>
+    <h2 style="margin-top: 20px;">Maps & OGC Services</h2>
+    <h6 style="margin-top: 10px;">Collaborative applications - Platform to share your data and create governance
+        applications</h6>
+
+    <div class="flex-container">
+        <div data-role="Map">
+            <a href="{{ url_for('map') }}" class="flex-item">
+                <img src="{{ url_for('static', filename='2dnew.png') }}" alt="Image 1">
+                <p>Bhuvan 2D</p>
+            </a>
+        </div>
+        <div data-role="Map">
+            <a href="page2.html" class="flex-item">
+                <img src="{{ url_for('static', filename='3dnew.png') }}" alt="Image 2">
+                <p>Bhuvan-3D</p>
+            </a>
+        </div>
+        <div data-role="Map">
+            <a href="page3.html" class="flex-item">
+                <img src="{{ url_for('static', filename='bhuvanlite.png') }}" alt="Image 3">
+                <p>Bhuvan-Lite</p>
+            </a>
+        </div>
+        <div data-role="Map">
+            <a href="page4.html" class="flex-item">
+                <img src="{{ url_for('static', filename='2dnew.png') }}" alt="Image 4">
+                <p>open data archive 4</p>
+            </a>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 20px;">Application Sector</h2>
+    <h6 style="margin-top: 10px;">Collaborative applications - Platform to share your data and create governance
+        applications</h6>
+    <div class="flex-container">
+        <div data-role="gov">
+            <a href="app_page1.html" class="flex-item">
+                <img src="{{ url_for('static', filename='egov_app.png') }}" alt="App Image 1">
+                <p>E-GovernanceE-GovernanceDecentralised Planning</p>
+            </a>
+        </div>
+        <div data-role="tour">
+            <a href="app_page2.html" class="flex-item">
+                <img src="{{ url_for('static', filename='tourism_app.png') }}" alt="App Image 2">
+                <p>Tourism</p>
+            </a>
+        </div>
+        <div data-role="urban">
+            <a href="app_page3.html" class="flex-item">
+                <img src="{{ url_for('static', filename='urban_app.png') }}" alt="App Image 3">
+                <p>Urban</p>
+            </a>
+        </div>
+        <div data-role="rural">
+            <a href="app_page4.html" class="flex-item">
+                <img src="{{ url_for('static', filename='rural_app.png') }}" alt="App Image 4">
+                <p>Rural</p>
+            </a>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 20px;">Maps & OGC Services</h2>
+    <h6 style="margin-top: 10px;">Collaborative applications - Platform to share your data and create governance
+        applications</h6>
+
+    <div class="flex-container">
+        <div data-role="thematic">
+            <a href="app_page1.html" class="flex-item">
+                <img src="{{ url_for('static', filename='tmnew.png') }}" alt="App Image 1">
+                <p></p>
+            </a>
+        </div>
+        <div data-role="occean">
+            <a href="app_page2.html" class="flex-item">
+                <img src="{{ url_for('static', filename='osnew.png') }}" alt="App Image 2">
+                <p>Occean services</p>
+            </a>
+        </div>
+        <div data-role="disaster">
+            <a href="app_page3.html" class="flex-item">
+                <img src="{{ url_for('static', filename='dsnew.png') }}" alt="App Image 3">
+                <p>disaster managment</p>
+            </a>
+        </div>
+        <div data-role="Map">
+            <a href="app_page4.html" class="flex-item">
+                <img src="{{ url_for('static', filename='cmnew.png') }}" alt="App Image 4">
+                <p>Create Map</p>
+            </a>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 20px;">Bhuvan Central Applications</h2>
+    <h6 style="margin-top: 10px;">Collaborative applications - Platform to share your data and create governance
+        applications</h6>
+
+    <div class="flex-container">
+        <div data-role="ministry">
+            <a href="app_page1.html" class="flex-item">
+                <img src="{{ url_for('static', filename='central_app.png') }}" alt="App Image 1">
+                <p>Central Ministry</p>
+            </a>
+        </div>
+        <div data-role="special">
+            <a href="app_page2.html" class="flex-item">
+                <img src="{{ url_for('static', filename='special_app.png') }}" alt="App Image 2">
+                <p>Special application</p>
+            </a>
+        </div>
+        <div data-role="gov">
+            <a href="app_page3.html" class="flex-item">
+                <img src="{{ url_for('static', filename='g_gov_app.png') }}" alt="App Image 3">
+                <p>G-governance</p>
+            </a>
+        </div>
+        <div data-role="Map">
+            <a href="app_page4.html" class="flex-item">
+                <img src="{{ url_for('static', filename='state_app.png') }}" alt="App Image 4">
+                <p>State wise application</p>
+            </a>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 20px;">Big Box with Five Smaller Boxes</h2>
+
+    <div class="big-box">
+        <div class="flex-container">
+            <div class="small-box">
+                <img src="{{ url_for('static', filename='month.png') }}" alt="Small Image 1">
+                <p>Text for Small Box 1</p>
+            </div>
+            <div class="small-box">
+                <img src="{{ url_for('static', filename='daily.png') }}" alt="Small Image 2">
+                <p>Text for Small Box 2</p>
+            </div>
+            <div class="small-box">
+                <img src="{{ url_for('static', filename='hits.png') }}" alt="Small Image 3">
+                <p>Text for Small Box 3</p>
+            </div>
+            <div class="small-box">
+                <img src="{{ url_for('static', filename='needa.png') }}" alt="Small Image 4">
+                <p>Text for Small Box 4</p>
+            </div>
+            <div class="small-box">
+                <img src="{{ url_for('static', filename='users.png') }}" alt="Small Image 5">
+                <p>Text for Small Box 5</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-item">
+                <h3>Contact Us</h3>
+                <p>Email: info@bhuvanportal.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+            <div class="footer-item">
+                <h3>Follow Us</h3>
+                <p>Twitter</p>
+                <p>LinkedIn</p>
+            </div>
+            <div class="footer-item">
+                <h3>Privacy Policy</h3>
+                <p>Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let startTime; // Variable to store start time
+        let endTime;   // Variable to store end time
+        let delayedTrackingTimeout;
+        let pressedModifiers = {
+            ctrl: false,
+            alt: false,
+            shift: false,
+            meta: false
+        };
+        function logDataRole(event) {
+            const target = event.target;
+            const dataRole = findDataRole(target);
+            getUserIP((ipAddress) => {
+                const user_recc = {
+                    action:event.type,
+                    target: target,
+                    dataRole: dataRole,
+                    ipAddress:ipAddress
+                }
+                console.log(user_recc)
+                fetch('/api/log/recc', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(user_recc),
+                })
+                    .then(response => response.json())
+                    .then(user_recc => {
+                        console.log('Data sent to backend:',user_recc );
+                    })
+                    .catch(error => {
+                        console.error('Error sending data to backend:', error);
+                    });
+            });
+
+
+            // console.log(`User action (${event.type}) on element with data-role: ${dataRole || 'No data-role'}`);
+        }
+
+        // Function to find the data-role attribute on the target or its ancestors
+        function findDataRole(element) {
+            while (element) {
+                const role = element.getAttribute('data-role');
+                if (role) {
+                    return role;
+                }
+                element = element.parentElement;
+            }
+            return null;
+        }
+
+        // Get all div elements
+        const allDivs = document.querySelectorAll('div');
+
+        // Attach event listeners to each div
+        allDivs.forEach(div => {
+            div.addEventListener('mouseover', logDataRole);
+            div.addEventListener('click', logDataRole);
+        });
+
+        function delayedTrackAndSend(action, target, coordinates, zoomDelta) {
+            // Clear any existing timeout
+            clearTimeout(delayedTrackingTimeout);
+
+            // Set a new timeout for 50 milliseconds
+            delayedTrackingTimeout = setTimeout(() => {
+                trackAndSend(action, target, coordinates, zoomDelta);
+            }, 50);
+        }
+
+        function trackAndSend(action, target, coordinates, zoomDelta) {
+            const timestamp = new Date().toISOString();
+            const microtime = performance.now(); // Microtime in milliseconds
+
+
+            startTime = getCurrentTime();
+            const screenResolution = {
+                width: screen.width,
+                height: screen.height
+            };
+            // Get browser information
+            const browserInfo = getBrowserInfo();
+
+            const currentURL = window.location.href;
+
+            // Call the function to get the user's IP address
+            getUserIP((ipAddress) => {
+                const data = {
+                    action: action,
+                    target: target,
+                    timestamp: timestamp,
+                    x_coordinates: coordinates.x,
+                    y_coordinates: coordinates.y,
+                    browser: browserInfo.name,
+                    browserVersion: browserInfo.version,
+                    microtime: microtime,
+                    scrnwidth: screenResolution.width,
+                    scrnheight: screenResolution.height,
+                    currentURL: currentURL,
+                    starttime: startTime,
+                    endtime: null,
+                    ipAddress: ipAddress,
+                    ctrl: pressedModifiers.ctrl,
+                    alt: pressedModifiers.alt,
+                    shift: pressedModifiers.shift,
+                    meta: pressedModifiers.meta
+
+                };
+                // console.log(data)
+                // console.log(data.ipAddress)
+
+
+                // Send data to the backend using Fetch API
+                fetch('/api/log', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Data sent to backend:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error sending data to backend:', error);
+                    });
+            });
+        }
+
+        function sendEndTime(endTime) {
+            endTime = getEndTime();
+            // console.log('User Session End Time:', endTime);
+        }
+
+
+
+
+
+
+
+
+        // Function to get browser information
+        function getBrowserInfo() {
+            const userAgent = navigator.userAgent;
+            let name = 'Unknown';
+            let version = 'Unknown';
+
+            // Check for Chrome
+            if (/Chrome/.test(userAgent) && !/Edg/.test(userAgent)) {
+                name = 'Chrome';
+                version = userAgent.match(/Chrome\/(\S+)/)[1];
+            }
+            // Check for Firefox
+            else if (/Firefox/.test(userAgent)) {
+                name = 'Firefox';
+                version = userAgent.match(/Firefox\/(\S+)/)[1];
+            }
+            // Check for Safari
+            else if (/Safari/.test(userAgent) && !/Chrome/.test(userAgent)) {
+                name = 'Safari';
+                version = userAgent.match(/Version\/(\S+)/)[1];
+            }
+            // Check for Edge
+            else if (/Edg/.test(userAgent) || /Edge/.test(userAgent)) {
+                name = 'Edge';
+                version = userAgent.match(/(Edg|Edge)\/(\S+)/)[2];
+            }
+            // Check for Internet Explorer
+            else if (/Trident/.test(userAgent)) {
+                name = 'Internet Explorer';
+                version = userAgent.match(/rv:([\d.]+)/)[1];
+            }
+
+            return {
+                name: name,
+                version: version
+            };
+        }
+
+        // Function to get user's IP address using a third-party service
+        function getUserIP(callback) {
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip || 'Unknown';
+                    callback(ipAddress);
+                })
+                .catch(error => {
+                    console.error('Error getting IP address:', error);
+                    callback('Unknown');
+                });
+        }
+
+        // Event listener for mouse click
+        document.addEventListener('click', function (event) {
+            const coordinates = { x: event.clientX, y: event.clientY };
+
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('click', target, coordinates);
+        });
+
+        // Event listener for mouse move (cursor movement)
+        document.addEventListener('mousemove', function (event) {
+            const coordinates = { x: event.clientX, y: event.clientY };
+
+            // Get new URL after the mouse move action
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('mousemove', target, coordinates);
+        });
+
+        // Event listener for scroll
+        document.addEventListener('scroll', function () {
+            const coordinates = { x: window.scrollX, y: window.scrollY };
+
+            // Get new URL after the scroll action
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('scroll', target, coordinates);
+        });
+
+        // Event listener for zoom (wheel event)
+        document.addEventListener('wheel', function (event) {
+            const coordinates = { x: event.clientX, y: event.clientY };
+
+            // Get the zoom delta
+            const zoomDelta = event.deltaY;
+
+            // Get new URL after the zoom action
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('zoom', target, coordinates, zoomDelta);
+        });
+
+        document.addEventListener('keydown', function (event) {
+            pressedModifiers.ctrl = event.ctrlKey;
+            pressedModifiers.alt = event.altKey;
+            pressedModifiers.shift = event.shiftKey;
+            pressedModifiers.meta = event.metaKey;
+        });
+
+        // Event listener for keyup to track released modifiers
+        document.addEventListener('keyup', function (event) {
+            pressedModifiers.ctrl = event.ctrlKey;
+            pressedModifiers.alt = event.altKey;
+            pressedModifiers.shift = event.shiftKey;
+            pressedModifiers.meta = event.metaKey;
+        });
+
+        // Function to update the state of pressed modifiers
+        function updatePressedModifiers(event) {
+            pressedModifiers.ctrl = event.ctrlKey;
+            pressedModifiers.alt = event.altKey;
+            pressedModifiers.shift = event.shiftKey;
+            pressedModifiers.meta = event.metaKey;
+        }
+
+        // Function to get current time
+        function getCurrentTime() {
+            return new Date().toISOString();
+        }
+
+        function getEndTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
+
+        }
+
+
+        // Log the start time
+        startTime = getCurrentTime();
+        // console.log('User Session Start Time:', startTime);
+
+
+        window.addEventListener('beforeunload', function () {
+            endTime = getEndTime();
+            // console.log('User Session End Time1:', endTime);
+
+            browserInfo = getBrowserInfo();
+
+            const screenResolution = {
+                width: screen.width,
+                height: screen.height
+            };
+
+            data = {
+                action: 'session_end',
+                target: 'Page',
+                timestamp: new Date().toISOString(),
+                x_coordinates: null,
+                y_coordinates: null,
+                browser: browserInfo.name,
+                browserVersion: browserInfo.version,
+                microtime: performance.now(),
+                scrnwidth: screenResolution.width,
+                scrnheight: screenResolution.height,
+                currentURL: null,
+                starttime: startTime,
+                endtime: endTime, // Update endtime here
+                ipAddress: null,
+                ctrl: pressedModifiers.ctrl,
+                alt: pressedModifiers.alt,
+                shift: pressedModifiers.shift,
+                meta: pressedModifiers.meta
+            };
+            // console.log(data)
+
+
+            // Send data to the backend using Fetch API
+            fetch('/api/log/end', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data sent to backend:', data);
+                })
+                .catch(error => {
+                    console.error('Error sending data to backend:', error);
+                });
+        });
+
+        let sessionData = {
+      startTime: 0,
+      totalSessionTime: 0,
+      pageVisits: {},
+    };
+
+    function startSession() {
+      sessionData.startTime = performance.now();
+    }
+
+    function trackPage(pageName) {
+      const currentTime = performance.now();
+      const elapsedTime = currentTime - sessionData.startTime;
+
+      if (!sessionData.pageVisits[pageName]) {
+        sessionData.pageVisits[pageName] = {
+          visits: 0,
+          totalTime: 0,
+        };
+      }
+
+      sessionData.pageVisits[pageName].visits++;
+      sessionData.pageVisits[pageName].totalTime += elapsedTime;
+      sessionData.totalSessionTime += elapsedTime;
+
+      console.log(`Visited ${pageName} - ${sessionData.pageVisits[pageName].visits} times, spent ${elapsedTime} milliseconds on this page`);
+
+      sessionData.startTime = currentTime;
+    }
+
+    function stopSession() {
+      const totalSessionTimeInSeconds = sessionData.totalSessionTime / 1000;
+      console.log(`Total session time: ${totalSessionTimeInSeconds} seconds`);
+    }
+
+    // Call stopSession when the user leaves the website or after a certain time
+    window.addEventListener('beforeunload', stopSession);
+
+
+    function stopSession() {
+      const totalSessionTimeInSeconds = sessionData.totalSessionTime / 1000;
+      console.log(`Total session time: ${totalSessionTimeInSeconds} seconds`);
+
+      // Analyze session data
+      analyzeSession();
+
+      // Send session data to Flask backend
+      sendSessionDataToBackend(sessionData);
+    }
+
+    function sendSessionDataToBackend(data) {
+      // Make an AJAX request to Flask backend
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://your-flask-backend-endpoint', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      // Convert data to JSON before sending
+      const jsonData = JSON.stringify(data);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          // Handle the response from the backend if needed
+          console.log('Response from backend:', xhr.responseText);
+        }
+      };
+
+      // Send the JSON data to the backend
+      xhr.send(jsonData);
+    }
+
+    // Call stopSession when the user leaves the website or after a certain time
+    window.addEventListener('beforeunload', stopSession);
+    startSession();
+
+
+    </script>
+</body>
+
+</html>

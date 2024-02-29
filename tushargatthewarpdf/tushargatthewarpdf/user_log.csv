@@ -1,0 +1,2 @@
+Action,Target,Timestamp,x_Coordinates,y_Coordinates,browser,browserVersion,microtime,scrnwidth,scrnheight,ipAddress,inputValue,url,starttime,endtime,ctrl,alt,shift,meta
+session_end,Page,2024-01-18T16:06:20.403Z,,,Chrome,120.0.0.0,3637895.5999999046,1536,864,,,,2024-01-18T15:05:57.871Z,2024-01-18T21:36:20.399Z,False,False,False,False

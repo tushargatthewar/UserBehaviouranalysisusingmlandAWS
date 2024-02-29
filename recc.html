@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+</head>
+<body>
+
+  <!-- Home Page -->
+  <div id="home">
+    <!-- Your home page content goes here -->
+    <a href="#" onclick="trackPage('Home')">Go to Map</a>
+  </div>
+
+  <!-- Map Page -->
+  <div id="map">
+    <!-- Your map page content goes here -->
+    <a href="#" onclick="trackPage('Map')">Go to Home</a>
+  </div>
+
+  <script>
+    let sessionData = {
+      startTime: 0,
+      totalSessionTime: 0,
+      pageVisits: {},
+    };
+
+    function startSession() {
+      sessionData.startTime = performance.now();
+    }
+
+    function trackPage(pageName) {
+      const currentTime = performance.now();
+      const elapsedTime = currentTime - sessionData.startTime;
+
+      if (!sessionData.pageVisits[pageName]) {
+        sessionData.pageVisits[pageName] = {
+          visits: 0,
+          totalTime: 0,
+        };
+      }
+
+      sessionData.pageVisits[pageName].visits++;
+      sessionData.pageVisits[pageName].totalTime += elapsedTime;
+      sessionData.totalSessionTime += elapsedTime;
+
+      console.log(`Visited ${pageName} - ${sessionData.pageVisits[pageName].visits} times, spent ${elapsedTime} milliseconds on this page`);
+
+      sessionData.startTime = currentTime;
+    }
+
+    function stopSession() {
+      const totalSessionTimeInSeconds = sessionData.totalSessionTime / 1000;
+      console.log(`Total session time: ${totalSessionTimeInSeconds} seconds`);
+    }
+
+    // Call stopSession when the user leaves the website or after a certain time
+    window.addEventListener('beforeunload', stopSession);
+  
+    
+    function stopSession() {
+      const totalSessionTimeInSeconds = sessionData.totalSessionTime / 1000;
+      console.log(`Total session time: ${totalSessionTimeInSeconds} seconds`);
+
+      // Analyze session data
+      analyzeSession();
+
+      // Send session data to Flask backend
+      sendSessionDataToBackend(sessionData);
+    }
+
+    function sendSessionDataToBackend(data) {
+      // Make an AJAX request to Flask backend
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://your-flask-backend-endpoint', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      // Convert data to JSON before sending
+      const jsonData = JSON.stringify(data);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          // Handle the response from the backend if needed
+          console.log('Response from backend:', xhr.responseText);
+        }
+      };
+
+      // Send the JSON data to the backend
+      xhr.send(jsonData);
+    }
+
+    // Call stopSession when the user leaves the website or after a certain time
+    window.addEventListener('beforeunload', stopSession);
+    startSession();
+  </script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Bing Maps Api</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='static/estilo.css'>
+</head>
+
+<body>
+    <header>
+        <h1>BHUVAN 2D
+
+        </h1>
+    </header>
+    <main>
+        <div class="options">
+            <input class="search_input" placeholder="Search">
+            <button class="search_btn">Search</button>
+        </div>
+        <div id="map"></div>
+
+    </main>
+
+    <script src="static/maps.js"></script>
+    <script src='http://www.bing.com/api/maps/mapcontrol?callback=getMap' async></script>
+    <script>
+        let startTime; // Variable to store start time
+        let endTime;   // Variable to store end time
+        let delayedTrackingTimeout;
+        let pressedModifiers = {
+            ctrl: false,
+            alt: false,
+            shift: false,
+            meta: false
+        };
+
+        function delayedTrackAndSend(action, target, coordinates, zoomDelta) {
+            // Clear any existing timeout
+            clearTimeout(delayedTrackingTimeout);
+
+            // Set a new timeout for 50 milliseconds
+            delayedTrackingTimeout = setTimeout(() => {
+                trackAndSend(action, target, coordinates, zoomDelta);
+            }, 50);
+        }
+
+        function trackAndSend(action, target, coordinates, zoomDelta) {
+            const timestamp = new Date().toISOString();
+            const microtime = performance.now(); // Microtime in milliseconds
+            startTime = getCurrentTime();
+            const screenResolution = {
+                width: screen.width,
+                height: screen.height
+            };
+            // Get browser information
+            const browserInfo = getBrowserInfo();
+
+            const currentURL = window.location.href;
+
+            const inputValue = document.querySelector('.search_input').value;
+
+            // Call the function to get the user's IP address
+            getUserIP((ipAddress) => {
+                const data = {
+                    action: action,
+                    target: target,
+                    timestamp: timestamp,
+                    x_coordinates: coordinates.x,
+                    y_coordinates: coordinates.y,
+                    browser: browserInfo.name,
+                    browserVersion: browserInfo.version,
+                    microtime: microtime,
+                    scrnwidth: screenResolution.width,
+                    scrnheight: screenResolution.height,
+                    currentURL: currentURL,
+                    starttime: startTime,
+                    endtime: null,
+                    ipAddress: ipAddress,
+                    inputValue: inputValue, // Include the input value
+                    ctrl: pressedModifiers.ctrl,
+                    alt: pressedModifiers.alt,
+                    shift: pressedModifiers.shift,
+                    meta: pressedModifiers.meta
+                };
+                console.log(data)
+                // Send data to the backend using Fetch API
+                fetch('/api/log', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Data sent to backend:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error sending data to backend:', error);
+                    });
+            });
+        }
+        function sendEndTime(endTime) {
+            endTime = getEndTime();
+            console.log('User Session End Time:', endTime);
+        }
+
+
+        // Function to get browser information
+        function getBrowserInfo() {
+            const userAgent = navigator.userAgent;
+            let name = 'Unknown';
+            let version = 'Unknown';
+
+            // Check for Chrome
+            if (/Chrome/.test(userAgent) && !/Edg/.test(userAgent)) {
+                name = 'Chrome';
+                version = userAgent.match(/Chrome\/(\S+)/)[1];
+            }
+            // Check for Firefox
+            else if (/Firefox/.test(userAgent)) {
+                name = 'Firefox';
+                version = userAgent.match(/Firefox\/(\S+)/)[1];
+            }
+            // Check for Safari
+            else if (/Safari/.test(userAgent) && !/Chrome/.test(userAgent)) {
+                name = 'Safari';
+                version = userAgent.match(/Version\/(\S+)/)[1];
+            }
+            // Check for Edge
+            else if (/Edg/.test(userAgent) || /Edge/.test(userAgent)) {
+                name = 'Edge';
+                version = userAgent.match(/(Edg|Edge)\/(\S+)/)[2];
+            }
+            // Check for Internet Explorer
+            else if (/Trident/.test(userAgent)) {
+                name = 'Internet Explorer';
+                version = userAgent.match(/rv:([\d.]+)/)[1];
+            }
+
+            return {
+                name: name,
+                version: version
+            };
+        }
+
+        // Function to get user's IP address using a third-party service
+        function getUserIP(callback) {
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip || 'Unknown';
+                    callback(ipAddress);
+                })
+                .catch(error => {
+                    console.error('Error getting IP address:', error);
+                    callback('Unknown');
+                });
+        }
+
+        // Event listener for mouse click
+        document.addEventListener('click', function (event) {
+            const coordinates = { x: event.clientX, y: event.clientY };
+
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('click', target, coordinates);
+        });
+
+        // Event listener for mouse move (cursor movement)
+        document.addEventListener('mousemove', function (event) {
+            const coordinates = { x: event.clientX, y: event.clientY };
+
+            // Get new URL after the mouse move action
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('mousemove', target, coordinates);
+        });
+
+        // Event listener for scroll
+        document.addEventListener('scroll', function () {
+            const coordinates = { x: window.scrollX, y: window.scrollY };
+
+            // Get new URL after the scroll action
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('scroll', target, coordinates);
+        });
+
+        // Event listener for zoom (wheel event)
+        document.addEventListener('wheel', function (event) {
+            const coordinates = { x: event.clientX, y: event.clientY };
+
+            // Get the zoom delta
+            const zoomDelta = event.deltaY;
+
+            // Get new URL after the zoom action
+            const target = event.target.id || event.target.className || 'Page';
+
+            // Delayed tracking after 50 milliseconds
+            delayedTrackAndSend('zoom', target, coordinates, zoomDelta);
+        });
+
+        // Event listener for input change
+        document.querySelector('.search_input').addEventListener('input', function (event) {
+            // Capture the input value when it changes
+            const inputValue = event.target.value;
+
+            // Call a function to log the input value (you can decide when to call it based on your requirements)
+            logInputValue(inputValue);
+        });
+
+        // Function to log the input value
+        function logInputValue(inputValue) {
+            // You can log the input value separately or include it in your existing functions
+            console.log('Input Value:', inputValue);
+        }
+
+
+        document.addEventListener('keydown', function (event) {
+            pressedModifiers.ctrl = event.ctrlKey;
+            pressedModifiers.alt = event.altKey;
+            pressedModifiers.shift = event.shiftKey;
+            pressedModifiers.meta = event.metaKey;
+        });
+
+        // Event listener for keyup to track released modifiers
+        document.addEventListener('keyup', function (event) {
+            pressedModifiers.ctrl = event.ctrlKey;
+            pressedModifiers.alt = event.altKey;
+            pressedModifiers.shift = event.shiftKey;
+            pressedModifiers.meta = event.metaKey;
+        });
+
+        // Function to update the state of pressed modifiers
+        function updatePressedModifiers(event) {
+            pressedModifiers.ctrl = event.ctrlKey;
+            pressedModifiers.alt = event.altKey;
+            pressedModifiers.shift = event.shiftKey;
+            pressedModifiers.meta = event.metaKey;
+        }
+
+        // Function to get current time
+        function getCurrentTime() {
+            return new Date().toISOString();
+        }
+
+        function getEndTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
+
+        }
+        // Log the start time
+        startTime = getCurrentTime();
+        console.log('User Session Start Time:', startTime);
+
+
+
+        // Event listener for beforeunload to capture potential end time
+        window.addEventListener('beforeunload', function () {
+            endTime = getEndTime();
+            console.log('User Session End Time:', endTime);
+            inputValue = document.querySelector('.search_input').value;
+            browserInfo = getBrowserInfo();
+
+            const screenResolution = {
+                width: screen.width,
+                height: screen.height
+            };
+
+            data = {
+                action: 'session_end',
+                target: 'Page',
+                timestamp: new Date().toISOString(),
+                x_coordinates: null,
+                y_coordinates: null,
+                browser: browserInfo.name,
+                browserVersion: browserInfo.version,
+                microtime: performance.now(),
+                scrnwidth: screenResolution.width,
+                scrnheight: screenResolution.height,
+                currentURL: null,
+                starttime: startTime,
+                endtime: endTime, // Update endtime here
+                ipAddress: null,
+                inputValue:inputValue,
+                ctrl: pressedModifiers.ctrl,
+                alt: pressedModifiers.alt,
+                shift: pressedModifiers.shift,
+                meta: pressedModifiers.meta
+            };
+            console.log(data)
+
+            fetch('/api/log/end', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data sent to backend:', data);
+                })
+                .catch(error => {
+                    console.error('Error sending data to backend:', error);
+                });
+        });
+
+        // Send a final update to the server
+
+
+    </script>
+</body>
+
+</html>

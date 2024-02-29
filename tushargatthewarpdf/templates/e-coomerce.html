@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="height=device-height, initial-scale=1.0">
+    <title>SISDP - Bhuvan Panchayat</title>
+    <link rel="icon" type="image/x-icon" href="Img/bhuvanLogo.png">
+    <script src="libs/jquery-3.6.4.min.js"></script>
+    <script src="libs/script.js"></script>
+    <script src="libs/swiper-bundle.min.js"></script> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='w3.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='swiper-bundle.min.css')}}">   
+    <link rel="stylesheet" href="{{ url_for('static', filename='lightbox.min.css')}}">
+    <script src="libs/lightbox.min.js"></script> 
+</head>
+<!-- Header -->
+<div id="topcontainer" >
+  <div style="float:left;align-self: center;width:10%;">
+    <a href="https://www.india.gov.in/" target="blank" ><img alt="Indian Emblem" src= "SISDP/Img/Emblem.png"  width="25%" style="padding-left:0.3em"></a>
+    <a href="https://www.isro.gov.in/" target="blank" ><img src="SISDP/Img/ISRO.png" width="40%" alt="ISRO logo" style="padding-left:0.3em"></a>
+  </div>
+  <div id="center">
+      <h2>Space based Information Support for Decentralized Planning (SISDP)</h2>
+      <p>Geospatial Technology platform to support e-governance </p>
+  </div>
+    <div style="float:right;width:15%;align-self: center;">
+      <a href="https://bhuvan.nrsc.gov.in/home/index.php" target="blank"><img src="SISDP/Img/bhuvanLogo.png" width="10%" alt="Bhuvan logo"></a> 
+      <a href="https://bhuvanpanchayat.nrsc.gov.in/index.html"><img src="SISDP/Img/BP.png" width="65%" alt="Bhuvan Panchayat logo"></a>
+      <a href="https://www.nrsc.gov.in/" target="blank"><img src="SISDP/Img/NRSC.png" width="20%" alt="NRSC logo"></a>     
+    </div>
+</div>
+<!-- Navigation bar -->
+<div class="nav">
+  <ul>
+    <li><a href="#" id="Home">Home</a></li>
+    <li class="topmenu">
+      <a href="#">About</a>
+      <ul class="submenu">
+        <li><a href="#" id="About">SISDP Project</a></li>
+        <li><a href="#" id="Contact">Project Team</a></li>
+      </ul>
+    </li>
+    <li><a href="#" id="Services">Products & Services</a></li>
+    <li><a href="#" id="Tool">Planning Tools</a></li>
+    <li><a href="#" id="Stories">Success Stories</a></li>
+    <li><a href="#" id="Atlas">Atlas</a></li>
+  </ul>
+</div>
+<script>
+  $(document).ready(function() {
+    $(".nav ul li a").click(function() {
+      $(".nav ul li a").removeClass("active-menu");
+      $(this).addClass("active-menu");
+    });
+  });
+</script>
+<!------------- About SISDP -------->
+<section id="About_content" style="display:none">
+  <div class="content_div w3-animate-opacity">
+      <h2 >About SISDP Project</h2>
+      <p>The 73rd and 74th Constitution Amendments 1993, for rural and urban areas are the realization of consistent and conscious effort towards decentralized planning which have provided the much needed constitutional legitimacy to local governance institutions, defined their functional domains and provided financial devolution to these institutions. Space based Information Support for Decentralized Planning (SISDP) project was formulated by NRSC and was implemented in partnership with State Remote Sensing Application Centres in the country to provide basic planning inputs derived from satellite data. The major deliverables viz. Satellite Image of 2.5 m resolution for the entire country and thematic maps on 1:10000 scale, generated for the first time in the country are extremely useful in meeting the current requirements of developmental, planning, implementation and monitoring activities at Panchayat / Village Level</p>
+      
+      <div class="obj">
+      <div>
+        <h3>Goal</h3>
+        <p > “Empowering Panchayati Raj Institutions (PRIs) and the Stakeholders with  Space Based Information Support for Decentralized Planning and Governance ”. 
+        </p>
+        <h3>Objectives</h3>
+        <ul class="list" >
+          <li>Generation of High resolution satellite data image base</li>
+          <li>Updation of Thematic data for year 2015-16 for entire country at 1:10,000 scale.</li>
+          <li>Integration of Community Assets from multiple sources including EPRIS Project</li>
+          <li>Generation of Geospatial products and Services for Planning</li>
+          <li>Development of Bhuvan Panchayat portal with ease to use GUI and advanced spatial analytics. </li>
+        </ul>
+        
+      </div>
+      <img  class="about_img" alt="SISDP" src="SISDP/Img/sisdp.png" >
+    </div>
+  </div>
+</section>
+ <!-------------- Data & Services section---------->
+<section id="Services_content" style="display:none">
+  <div class="content_div w3-animate-opacity">
+    <h2>Products and Services <span>
+      <button id="copyButton" class="D-button" title="QGIS WMS Link" >
+        <img src="SISDP/Img/qgis.png" alt="copy" /><br>QGIS WMS </button>
+      <a href="https://bhuvan-app1.nrsc.gov.in/thematic/thematic/index.php?theme1=sisdpPh2&tab1=GetData" target="blank"  title="Link to Data download portal">
+        <button class="D-button" title="Link to Data download portal" ><img src="SISDP/Img/downloads.png" alt="download" /><br>Data Download</button></a>
+    </span></h2>
+    <p class= "P_italic">Together, let's leverage the power of thematic data layers for enhanced understanding and sustainable development in rural areas.</p> 
+    <!-- <p class= "P_italic">SISDP provides a comprehensive range of thematic data layers at 10K scale to provide valuable insights and information for decentralised planning.</p> -->
+    <div class="w3-card-4 lulc col w3-animate-left" style="width:100%;">
+      <img src="SISDP/Img/landuse.PNG" alt="LULC" class="w3-left data_img" >
+      <div class="w3-container" style="padding-top:1%;"> 
+        <header class="w3-header">
+          <h3>Land Use and Land Cover </h3>
+        </header>
+          <p>Our land cover data layer offers valuable insights into the types and distribution of land use across different regions. This data provides a comprehensive understanding of the Earth's surface, including forests, urban areas, agricultural land, water bodies, and more. Our data can assist users in making informed decisions related to land management, resource allocation, and sustainable development.</p>
+          <div class="copy-text">
+            <input type="text" class="ctext"  value="OGC WMS Service" placeholder="https://bhuvanpanchayat.nrsc.gov.in/geoserver2/SISDP_P2/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&transparent=true&LAYERS=SISDP_P2%3ALULC_PHASE_II"/>
+            <button class="copy-button"><img src="SISDP/Img/copy-paste.png" alt="copy" /></button>
+          </div>
+        </div> 
+  </div>
+    <div class="w3-card-4 drain col w3-animate-right" style="width:100%;">
+      <img src="SISDP/Img/Drinage.PNG" alt="Drainage" class="w3-left data_img" >
+      <div class="w3-container" style="padding-top:1%;">
+        <header class="w3-header ">
+          <h3>Drainage and water body</h3>
+        </header>
+          <p>Understanding the distribution and characteristics of drainage systems and water bodies is crucial for various fields, such as hydrology, water resource management, and environmental studies. Our drainage and water bodies data layer offers detailed information about rivers, lakes, reservoirs, wetlands, and other water features. This data enables user to assess water availability, monitor water quality, and analyze flood risks for sustainable water management.</p>
+          <div class="copy-text">
+            <input type="text" class="ctext" value="OGC WMS Service" placeholder="https://bhuvanpanchayat.nrsc.gov.in/geoserver2/SISDP_P2/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&transparent=true&LAYERS=SISDP_P2%3ADRAIN_PHASE_II"/>
+            <button class="copy-button"><img src="SISDP/Img/copy-paste.png" alt="copy" /></button>
+          </div>
+        </div> 
+    </div>
+    <div class="w3-card-4 infra col w3-animate-left" style="width:100%">
+      <img src="SISDP/Img/infra.PNG" alt="Infrastructure" class="w3-left data_img" >
+      <div class="w3-container" style="padding-top:1%;">
+        <header class="w3-header infra">
+          <h3>Infrastructure</h3>
+        </header>
+        <p>Efficient transportation and infrastructure networks are vital for economic development and connectivity in rural areas. Our infrastructure data layer includes information on roads and railways providing a comprehensive overview of transportation routes and networks. This data assists users in transportation planning, infrastructure development, logistics optimization, and assessing accessibility to various areas.</p>
+        <div class="copy-text">
+          <input type="text" class="ctext" value="OGC WMS Service" placeholder="https://bhuvanpanchayat.nrsc.gov.in/geoserver2/SISDP_P2/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&transparent=true&LAYERS=SISDP_P2%3AROAD_PHASE_II"/>
+          <button class="copy-button"><img src="SISDP/Img/copy-paste.png" alt="copy" /></button>
+        </div>
+      </div> 
+    </div>
+    <div class="w3-card-4 set col w3-animate-right" style="width:100%">
+      <img src="SISDP/Img/settelment.PNG" alt="Settlement" class="w3-left data_img" >
+      <div class="w3-container" style="padding-top:1%;">
+        <header class="w3-header ">
+          <h3>Settlements</h3>
+        </header>
+          <p>Our settlements data layer focuses on human settlements, providing comprehensive information about urban areas, towns, and villages. This data helps user understand the spatial characteristics and patterns of settlements, supporting their work in urban planning, infrastructure development, and demographic analysis.  This data is invaluable in understanding the dynamics of human habitation and guiding development initiatives.</p>
+          <div class="copy-text">
+            <input type="text" class="ctext" value="OGC WMS Service" placeholder="https://bhuvanpanchayat.nrsc.gov.in/geoserver2/SISDP_P2/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&transparent=true&LAYERS=SISDP_P2%3ASETTLEMENT_PHASE_II"/>
+            <button class="copy-button"><img src="SISDP/Img/copy-paste.png" alt="copy" /></button>
+          </div>
+        </div> 
+    </div>
+  </div>
+  <script src="SISDP/libs/copyToClipboard.js"></script>
+</section>
+ <!--  ------------------ Planning tools section ----------------- -->
+<section id="Tool_content" style="display:none">
+  <div class="content_div w3-animate-opacity">
+  <h2>Planning tools</h2>
+  <p class= "P_italic" style="padding-bottom: 1%;">
+    In India, Gram Panchayat (GP) is the basic planning unit in the bottom-up model of decentralized developmental planning. Land and water resources development planning in rural areas is a subject matter of local authorities from Panchayati Raj Institutions (PRIs) and endeavours are being made to orient the space technology towards providing technical assistance in preparing sustainable development plans.
+  </p>
+  <div class="obj">
+    <div style="display:flex;flex-direction: row;justify-content: space-evenly;padding-top: 2%;">
+      <div class="plan" style="background-color: #d3d3c7;">
+        <header class="w3-header " >
+          <h3>LRDP/WRDP</h3>
+          <img src="SISDP/Img/dp.PNG"  alt="LRDP&WRDP" >
+          <p>Generate and Download Land Resources Development Plan (LRDP) and Water Resources Development Plan (WRDP) products.</p>   
+      </div>
+      <div class="plan" style="background-color: #ddccc6;">
+        <header class="w3-header" >
+          <h3>Amenities PLanning</h3>
+        </header>
+        <img src="SISDP/Img/asset.PNG"  alt="Amenities">
+        <p>Generate Activities Plan</p>    
+      </div>
+      <a class="plan" href="gpsdp/index.html" target="_blank" style="text-decoration: none;background-color: #d9e0e3;">
+          <header class="w3-header " >
+            <h3>GPSDP</h3>
+          </header>
+          <img src="SISDP/Img/SP.jpg"  alt="GPSDP" >
+          <p>Panchayat level spatial Planning and Prioritization</p>    
+      </a>
+  </div> </div>
+</section>
+ <!--  ------------------ Contact Cards section ----------------- -->
+<section id="Contact_content" style="display:none">
+  <div class="content_div contact w3-animate-opacity" >
+    <h2>Project team</h2>
+      <div class="w3-bar blu-grey">
+        <button class="w3-bar-item w3-button tablink w3-teal" onclick="OpenTabs(event,'Tab1')">Focal Points</button>
+        <button class="w3-bar-item w3-button tablink" onclick="OpenTabs(event,'Tab2')">Partner Institutions</button>
+      </div>    
+      <div id="Tab1" class="tabs">
+        <table class="w3-table-all" >
+          <tr class="w3-light-grey ">
+            <th>CENTRE</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+          </tr>
+          <tr>
+            <td>NRSC</td>
+            <td><strong>Dr. Prakash Chauhan, </strong> Director</td>
+            <td>director[at]nrsc[dot]gov[dot]in</td>
+            <td>040-23884001</td>
+          </tr>
+          <tr>
+            <td>RRSC-NRSC</td>
+            <td><strong>Dr. S.K. Srivastav, </strong> Chief General Manager(RCs)<br><strong>Shri. S.S Rajasekhar, </strong>Head Applications</td>
+            <td>cgm[at]nrsc[dot]gov[dot]in<br>ssraj[at]nrsc[dot]gov[dot]in</td>
+            <td>011-26400754<br>040-23884553</td>
+          </tr>
+          <tr>
+            <td>RRSC-North</td>
+            <td><strong>Shri. Sameer Saran, </strong> Deputy General Manager (DGM) <br><strong>Ms. Khushboo Mirza, </strong>Systems Manager</td>
+            <td>  sameer_s[at]nrsc[dot]gov[dot]in<br>khushboo_m[at]nrsc[dot]gov[dot]in</td>
+            <td>  011-26400746<br>011-26406502</td>
+          </tr>
+          <tr>
+            <td>RRSC-East</td>
+            <td><strong>Dr. Suparn Pathak, </strong> Deputy General Manager (DGM)<br><strong>Shri. Arindam Guha , </strong> Head Applications</td>
+            <td>  s_pathak[at]nrsc[dot]gov[dot]in<br>arindam_g[at]nrsc[dot]gov[dot]in</td>
+            <td>  033-23410001<br>  033-23416816</td>
+          </tr>
+          <tr>
+            <td>RRSC-South</td>
+            <td><strong>Dr. Ramachandra Hebbar, </strong> General Manager (GM)<br><strong>Shri. Nagajothi K, </strong> Head Applications</td>
+            <td>  hebbar_kr[at]nrsc[dot]gov[dot]in<br> nagajothi_k[at]nrsc[dot]gov[dot]in</td>
+            <td>  080-23026950<br>  080-23026034</td>
+          </tr>
+          <tr>
+            <td>RRSC-West</td>
+            <td><strong>Dr. Apurba Kumar Bera, </strong> General Manager (GM)<br><strong>Dr. Rakesh Paliwal, </strong> Head Applications</td>
+            <td>  bera_ak[at]nrsc[dot]gov[dot]in<br> rakesh_p[at]nrsc[dot]gov[dot]in</td>
+            <td>  0291-2796394<br>  0291-2796381</td>
+          </tr>
+          <tr>
+            <td>RRSC-Central</td>
+            <td><strong>Dr. G. Sreenivasan , </strong> General Manager (GM)<br><strong>Dr. A.O. Varghese, </strong> Head Applications</td>
+            <td>  sreenivasan_g[at]nrsc[dot]gov[dot]in<br> varghese_ao[at]nrsc[dot]gov[dot]in</td>
+            <td>  0712-2851202<br>  0712-2851203</td>
+          </tr>
+          <tr>
+            <td>NESAC</td>
+            <td><strong>Dr. S.P. Aggarwal, </strong> Director<br><strong>Dr. Jonali Goswami, </strong> Program Coordinator</td>
+            <td>  director[at]nesac[dot]gov[dot]in<br>jonali.goswami[at]nesac[dot]gov[dot]in</td>
+            <td>  364 2570140<br>364 2308 716</td>
+          </tr>
+          <tr>
+            <td>ISRO-HQ</td>
+            <td><strong>Dr. J.V. Thomas, </strong>Director EDPO<br><strong>Dr. Rajeev Jaiswal, </strong> Associate Director (Urban & Env.)</td>
+            <td>jvthomas[at]isro[dot]gov[dot]in<br>rajeev[at]isro[dot]gov[dot]in</td>
+            <td> 80-22172445<br>80-22172446</td>
+          </tr>
+        </table>
+      </div>    
+      <div id="Tab2" class="tabs" style="display:none">
+        <div id="table-container"></div>
+      </div>
+      <script src="SISDP/libs/ProjectTeam.js"></script>  
+    <script>
+    function OpenTabs(evt, cityName) {
+      var i, x, tablinks;
+      x = document.getElementsByClassName("tabs");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-teal", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " w3-teal";
+    }
+    </script>
+    
+    
+  </div>
+</section>
+<!----------Success Stories Section ------->
+<section id="Stories_content" style="display:none">
+  <div class="content_div" style=" background-color: #f1f1f1;" >
+    <div id="cards_container">
+      <div class="ct_card w3-animate-zoom">
+        <img src="SISDP/CaseStudies/Story4.PNG" alt="Natural Resource Management"  class="story-img">
+        <h4>Natural Resource Management</h4>
+        <p>Gram Panchayat Spatial Developmental Planning for Sustainable Development of Natural Resources - Palduna Gram Panchayat </p>
+        <a href="SISDP/CaseStudies/Success Story-4_SISDP Database Utilization.pdf" target="_blank">
+          <button class="read-more-button">Read More <img src="SISDP/Img/pdf icon.png"></button>
+        </a>
+      </div>
+      <div class="ct_card w3-animate-zoom">
+       <img src="SISDP/CaseStudies/Story2.PNG" alt="Spatial Planning for Health Center"  class="story-img">
+        <h4>Spatial Planning for Health Center</h4>
+        <p>Identification of Locations for establishing new Sub Health Centres in Madhya Pradesh State </p>
+        <a href="SISDP/CaseStudies/Success Story-2_SISDP Database Utilization.pdf" target="_blank">
+          <button class="read-more-button">Read More <img src="SISDP/Img/pdf icon.png"></button>
+        </a>
+      </div>
+      <div class="ct_card w3-animate-zoom ">
+        <img src="SISDP/CaseStudies/Story1.PNG" alt="River rejuvenation programme" class="story-img"> 
+        <h4>River rejuvenation programme</h4>
+        <p>Space based Planning for Watershed Development under River Flow Restoration programme of Madhya Pradesh </p>
+        <a href="SISDP/CaseStudies/Success Story-1_SISDP Database Utilization.pdf" target="_blank">
+          <button class="read-more-button">Read More <img src="SISDP/Img/pdf icon.png"></button>
+        </a>
+      </div>
+      <div class="ct_card w3-animate-zoom">
+       <img src="SISDP/CaseStudies/Story3.PNG" alt="Feasibility study for health facilities"  class="story-img">
+        <h4>Feasibility study for health facilities</h4>
+        <p> Identification of Health facilities for Upgradation in Madhya Pradesh State </p>
+        <a href="SISDP/CaseStudies/Success Story-3_SISDP Database Utilization.pdf" target="_blank">
+          <button class="read-more-button">Read More <img src="SISDP/Img/pdf icon.png"></button>
+        </a>
+      </div>
+    </div>
+    <br>
+    <div style="align-self: center";>
+      <a href="SISDP/CaseStudies/Data Utilisation.pdf" target="_blank"  style="text-align: center;text-decoration: none;">
+        <button class="read-more-button w3-animate-zoom"> Click here for more information <img src="SISDP/Img/pdf icon.png"></button>
+      </a>
+    </div>
+    <!-- <button class="read-more-button w3-animate-zoom"><a href="SISDP/CaseStudies/Data Utilisation.pdf" target="_blank"  style="text-align: center;text-decoration: none;"></a> Click here for more information <img src="SISDP/Img/pdf icon.png"></button> -->
+  </div>
+</section >
+<body>
+  <div id="body">
+    <!------------- Image Slider -------->
+    <div class="swiper-container swiper1 ">
+      <div class="swiper-wrapper">
+        <!-- Dynamic Images here -->
+      </div>
+     
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination swiper-pagination1" style="position:relative;line-height: 1;"></div>
+    <script src="SISDP/libs/ImageSlider.js"></script> 
+     
+<!----------Intro ------->
+<div id="about" class="w3-container " >
+  <p>Space based Information Support for Decentralized Planning (SISDP) project was formulated by NNRMS/ISRO for supporting integration of Space based Information into developmental planning at 1:10k scale. Execution is done by NRSC and its Regional Centres with partnership from State Remote Sensing Centres, Line departments and Academia.</p>
+</div>
+
+<div id="combined">
+<div id="CombinedBlock" >
+  <div id="block4"  >
+    <div class="cards-list">
+      <a href="https://bhuvanpanchayat.nrsc.gov.in/index.html"  >
+        <div class="card 1 " >
+        <div class="card_image"><img src="SISDP/Img/portal.JPG" alt="portal"></div>
+        <div class="card_title "> <p>Bhuvan Panchayat Portal</p></div>
+      </div>
+      </a>  
+      <a href="#" id="Services_card"  >
+        <div class="card 2">
+          <div class="card_image"><img src="SISDP/Img/layer.png" alt="Data & Services"/></div>
+          <div class="card_title "> <p>Products & Services</p></div>
+          </div> 
+      </a>
+      <a href="#" id="Plan_card"  >
+        <div class="card 3">
+          <div class="card_image"><img src="SISDP/Img/settings.png" alt="Settings "/></div>
+          <div class="card_title "><p>Planning Tools</p></div>
+        </div>
+      </a>
+      <a href="https://bhuvan-app1.nrsc.gov.in/thematic/thematic/index.php?theme1=sisdpPh2&tab1=GetData" target="blank"  >
+        <div class="card 4">
+          <div class="card_image"><img src="SISDP/Img/DataDownload.png" alt="download"/></div>
+          <div class="card_title "><p>Data Download</p></div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div id ="block5" >
+      <!--  Events gallery section -->
+        <div class="col1 ">
+                  <div class="head">
+                    <p class="head-txt">Photo Gallery</p>
+                  </div>
+                <div>
+                  <div class="Event_Container">
+                    <div class="ImgSlides">
+                    <!--  dynamic images here -->
+                    </div>
+                  </div> 
+                </div>
+        </div>
+        <script src="SISDP/libs/EventSlider.js"></script>
+       <!--  News section -->
+        <div class="col2 ">
+              <div class="head">
+                <p class="head-txt">Latest Updates</p>
+              </div>
+
+             <section class="news-section">
+                <div class="news-items">
+                     <!--  dynamic news elements here -->
+                </div>
+                <script src="SISDP/libs/News.js"></script>
+              </section>
+      </div>
+  </div>
+</div>
+    <div id="atlas" >
+      <div class="col3 ">
+        <div class="atlas-head">
+          <p class="head-txt">SISDP LULC </p>
+        </div>
+        <div class="map-container">
+          <!--  dynamic images here -->
+        </div>
+      </div>
+        <script src="{{ url_for('static',filename='MapSlider.js')}}"></script>
+    </div>
+</div>
+</div> 
+</body>
+<!-------- Atlas Section ------->
+<section id="Atlas_content" style="display:none">
+  <div class="content_div">
+    <div class="swiper-container swiper2">
+      <div class="swiper-wrapper swiper-wrapper2">
+        <!-- Dynamic images will be added here -->
+      </div>
+    </div>
+      <div class="swiper-button-next custom-next-button"></div>
+      <div class="swiper-button-prev custom-prev-button"></div>
+      <div class="swiper-pagination swiper-pagination2" style="position:relative;line-height: 1;"></div>
+    </div>
+  <script src="SISDP/libs/Atlas_slider.js"></script> 
+</section>
+<section id="Copyright_Policy" style="display:none">
+  <div class="content_div Policy" >
+      <h2 >Contact Us</h2>
+      <br> SISDP Technical Team <br> RRSC-NRSC <br> Email : sisdpadmin[at]nrsc[dot]gov[dot]in <br>
+    </div>
+</section>
+<section id="Hyperlink_Policy" style="display:none">
+  <div class="content_div Policy">
+      <h2 >Hyperlinking Policy</h2>
+      <br>
+      <h4>Links to external websites/portals</h4>
+      <p>At many places in this website,  you may find weblinks to other websites / portals. These links have been placed for your convenience. NRSC,ISRO is not responsible for the contents of the linked destinations and does not necessarily endorse the views expressed in them. Mere presence of the link or its listing on this website should not be assumed as endorsement of any kind. We can not guarantee that these links will work all the time and we have no control over availability of linked destinations.</p>
+      <br>
+      <h4>Links to our website by other websites</h4>
+      <p>We do not object to you linking directly to the information that is hosted on this website and no prior permission is required for the same. However, we would like you to inform us about any links provided to this website so that you can be informed of any changes or updations therein. Also, we do not permit our pages to be loaded into frames on your site. The pages belonging to this website must load into a newly opened browser window of the User.</p>
+    </div>
+</section>
+<section id="TermsConditions" style="display:none">
+  <div class="content_div Policy">
+      <h2 >Terms & Conditions</h2>
+      <br>
+      <ul class="list">
+        <li>
+          This website is designed, developed and maintained by National Remote Sensing Centre (NRSC),Indian Space Research Organisation (ISRO).
+        </li>
+        <li>
+          Though all efforts have been made to ensure the accuracy and currency of the content on this website, the same should not be construed as a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the Department(s) and/or other source(s), and to obtain appropriate professional advice.
+        </li>
+        <li>
+          Under no circumstances will this Department be liable for any expense, loss or damage including, without limitation, indirect or consequential loss or damage, or any expense, loss or damage whatsoever arising from use, or loss of use, of data, arising out of or in connection with the use of this website.
+        </li>
+        <li>
+          These terms and conditions shall be governed by and construed in accordance with the Indian Laws. Any dispute arising under these terms and conditions shall be subject to the jurisdiction of the courts of India.
+        </li>
+        <li>
+          The information posted on this website could include hypertext links or pointers to information created and maintained by government/ non-government organisations. NRSC,ISRO is providing these links and pointers solely for your information and convenience. When you select a link to an external website, you are leaving the SISDP website and are subject to the privacy and security policies of the owners of the external website.
+        NRSC,ISRO does not guarantee availability of linked pages at all times. NRSC,ISRO cannot authorise use of copyrighted materials contained in the linked websites. Users are advised to request such authorisation from owners of linked websites.
+        </li>
+      </ul>
+    </div>
+</section>
+<section id="Disclaimer_section" style="display:none">
+  <div class="content_div Policy">
+      <h2 >Disclaimer</h2>
+      <br>
+      <p>By using the remote sensing data and products from this portal, user agrees that NRSC will not be liable for any direct or indirect loss arising from the use of the information. NRSC, ISRO disowns responsibility for any inadvertent errors, beyond its limitations. This portal has been compiled in good faith by NRSC, but no representation is made or warranty given (either expressed or implied) as to the completeness or accuracy of the information it contains.</p>
+    </div>
+</section>
+
+<footer class="w3-indigo">
+  <div class="f_col">
+      <div>
+        <ul  >
+          <li><h4> Quick Links</h4></li>
+          <li> <a  href="https://bhuvanpanchayat.nrsc.gov.in/index.html">Bhuvan Panchayat Portal</a></li>
+          <li> <a target="_blank" href="https://bhuvan.nrsc.gov.in/home/index.php">Bhuvan</a></li>
+      </div>
+      <div>
+        <ul >
+          <li style="color:#1d3e93">...</li>
+          <li> <a target="_blank" href="https://www.nrsc.gov.in/">National Remote Sensing Centre (NRSC)</a></li>
+          <li> <a target="_blank" href="http://www.isro.gov.in/">Indian Space Research Organisation (ISRO)</a></li>
+          <li> <a target="_blank" href="https://panchayat.gov.in/">Ministry of Panchayati Raj</a></li> 
+        </ul>
+      </div>
+      <div>
+        <ul ><li style="color:#1d3e93">...</li>
+          <label id="Visits"></label>
+          <label id="Hits"></label>
+          <script>
+              const visits = fetch("https://bhuvanpanchayat.nrsc.gov.in/Visits.log")
+                  .then((response) => response.text())
+                  .then((user) => {
+                  return user;
+                  });
+                  
+              const printVisits = async () => {
+                  const a = await visits;
+                  document.getElementById("Visits").innerHTML = "Unique Visitors : "+a+ "<br>";
+                  return a;
+                  document.write("<br>");
+                };
+                printVisits(); 
+                
+						function updateHits2() {
+              // Send an AJAX request to get the hits data
+              var xhr2 = new XMLHttpRequest();
+              xhr2.open("GET", "https://bhuvanpanchayat.nrsc.gov.in/Visits.log", true);
+              xhr2.onreadystatechange = function() {
+                if (xhr2.readyState === 4 && xhr2.status === 200) {
+                  // Update the "Hits" section with the new hits data
+                  document.getElementById("Visits").innerHTML = "Unique Visitors : " + xhr2.responseText + "<br>";
+                
+                }
+              if (!this.errorLogged) {
+                    // console.log("Unique Visitors Update: " + xhr2.status);
+                      this.errorLogged = true; // Set a flag to indicate that the error has been logged
+                    }
+              };
+              xhr2.send();
+            }
+
+          // Refresh the hits section every 5 seconds (you can adjust the interval)
+          setInterval(updateHits2, 30000);
+				
+              const hits = fetch("https://bhuvanpanchayat.nrsc.gov.in/Hits.log")
+                  .then((response) => response.text())
+                  .then((user) => {
+                  return user;
+                  });
+                  
+              const printVisits2 = async () => {
+                  const a = await hits;
+                  document.getElementById("Hits").innerHTML = "Hits Today: "+a;
+                  return a;
+                };
+                printVisits2();
+				
+				function updateHits() {
+          // Send an AJAX request to get the hits data
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://bhuvanpanchayat.nrsc.gov.in/Hits.log", true);
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              // Update the "Hits" section with the new hits data
+              document.getElementById("Hits").innerHTML = "Hits Today: " + xhr.responseText;
+            }
+          else {
+              // Handle HTTP error here
+              if (!this.errorLogged) {
+                // console.log("Hits Update: " + xhr.status);
+                  this.errorLogged = true; // Set a flag to indicate that the error has been logged
+                }
+            }
+          };
+          xhr.send();
+        }
+
+        // Refresh the hits section every 5 seconds (you can adjust the interval)
+        setInterval(updateHits, 30000);
+     </script>
+        </ul>     
+        <ul >
+              
+              <li><p id="date"></p></li>
+              <script>
+                      
+                    const lastModified = document.lastModified;
+                      if (lastModified) {
+                        const date = new Date(lastModified);
+                        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+                        const formattedDate = date.toLocaleDateString(undefined, options);
+                        document.getElementById("date").innerHTML = "Last Updated: " + formattedDate;
+                      } else {
+                        document.getElementById("date").innerHTML = "Last Updated: Date Not Available";
+                      }
+                </script>
+        </ul>   		
+      </div>
+  </div>
+ 
+  <div class="f_col">
+    <span><a   href="#" id="Copyright">Contact</a></span>
+    <span><a   href="#" id="Hyperlink">Hyperlinking Policy</a></span>
+    <span><a   href="#" id="Disclaimer">Disclaimer</a></span>
+    <span><a   href="#" id="Terms">Terms & Conditions</a></span>
+  </div>
+  <div class="footer">
+    <p> NRSC,ISRO. All Rights Reserved</p>
+  </div> 
+</footer>
+</html>

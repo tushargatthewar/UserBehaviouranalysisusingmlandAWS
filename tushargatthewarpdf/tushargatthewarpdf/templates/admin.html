@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection Results</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+     body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.plot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.plot img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+img{
+ display:flex;
+ }
+
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+td {
+    background-color: #fff;
+}
+
+/* Additional Styling for Sections */
+.section {
+    margin-bottom: 30px;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Anomaly Detection Results(DashBoard)</h1>
+
+         <div class="section">
+            <h2 onclick="toggleContent('anomaliesContent')">Anomalies in the New Data</h2>
+            <div class="card1" id="anomaliesContent" style="display: none;">
+                {{ anomalies_data | safe }}
+            </div>
+        </div>
+
+            <div class="section">
+                <h2>Statistical Summary for Normal Data</h2>
+                <div class="card2">
+                {{ normal_data_summary | safe }}
+                    </div>
+            </div>
+
+            <div class="section">
+                <h2>Statistical Summary for Anomalous Data</h2>
+                 <div class="card3">
+                {{ anomalous_data_summary | safe }}
+                     </div>
+            </div>
+             <div class="section">
+                <h2>Statisal Summary for Normal Data</h2>
+                 <div class="card4">
+                {{ funnel_data }}
+                     </div>
+            </div>
+
+            <div class="section">
+                <h2>Count of Anomalies Over Time (Line Chart)</h2>
+                <div class="plot">
+                    <img src="data:image/png;base64,{{ count_anomalies_plot_url }}" alt="Count of Anomalies Over Time">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Scatter Plot of Features</h2>
+                <div class="plot">
+                    <img src="data:image/png;base64,{{ scatter_plot_url }}" alt="Scatter Plot of Features">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Feature Distribution for Normal and Anomalous Data (Box Plots)</h2>
+                <div class="plot">
+                    <img src="data:image/png;base64,{{ feature_distribution_plot_url }}" alt="Feature Distribution">
+                </div>
+            </div>
+          <div class="section">
+    <h2>Anomaly Pattern Over Time (Line Chart)</h2>
+    <div class="plot">
+        <img src="data:image/png;base64,{{ anomaly_pattern_plot_url }}" alt="Anomaly Pattern Over Time">
+    </div>
+</div>
+             <div class="section">
+    <h2>Anomaly Pattern Over Time (Line Chart)</h2>
+    <div class="plot">
+        <img src="data:image/png;base64,{{ anomaly_pattern_plot_url1 }}" alt="Anomaly Pattern Over Time">
+    </div>
+</div>
+
+            <!-- Add additional sections for other plots -->
+
+        </div>
+    </div>
+ <script>
+        // JavaScript to toggle content visibility
+        function toggleContent(sectionId) {
+            var content = document.getElementById(sectionId);
+            content.style.display = (content.style.display === 'none') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

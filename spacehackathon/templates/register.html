@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Register</title>
+    <style>
+        body {
+            background-color:black; /* Set a background image related to travel */
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff; /* Text color */
+        }
+
+        .registration-container {
+            background-color: grey; /* Semi-transparent black background for the form */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #ffd700; /* Gold color for the heading */
+        }
+
+        form {
+            max-width: 300px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #ffd700;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #008080; /* Teal color for the submit button */
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005757; /* Darker teal color on hover */
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .alert {
+            background-color: #ff4d4d; /* Red color for the alert box */
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% if error_message %}
+    <div class="alert">{{ error_message }}</div>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li class="alert alert-{{ message[0] }}">{{ message[1] }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <div class="registration-container">
+        <h1>Travel Register</h1>
+        <form method="POST" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" required>
+            <div class="error-message" id="email-error"></div> <!-- New error message div -->
+            <label for="phone-number">Phone Number:</label>
+            <input type="tel" name="phone-number" pattern="[0-9]{10}" inputmode="numeric" maxlength="10" required title="Please enter exactly 10 digits for the phone number">
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+    </div>
+
+    <!-- JavaScript for email validation -->
+    <script>
+        function validateForm() {
+            var emailInput = document.getElementById('email');
+            var emailError = document.getElementById('email-error');
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                emailInput.focus();
+                return false;
+            } else {
+                emailError.textContent = '';
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
+    

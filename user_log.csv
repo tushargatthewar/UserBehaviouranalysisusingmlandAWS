@@ -1,0 +1,4 @@
+Action,Target,Timestamp,x_Coordinates,y_Coordinates,browser,browserVersion,microtime,scrnwidth,scrnheight,ipAddress,inputValue,url,starttime,endtime,ctrl,alt,shift,meta,X,Y
+session_end,Page,2024-01-18T16:42:53.852Z,,,Chrome,120.0.0.0,14110.200000286102,1536,864,,,,2024-01-18T16:42:53.422Z,2024-01-18T22:12:53.851Z,False,False,False,False,,
+session_end,Page,2024-01-18T19:17:49.570Z,,,Chrome,120.0.0.0,5245.900000095367,1536,864,,,,2024-01-18T19:17:49.131Z,2024-01-19T00:47:49.570Z,False,False,False,False,,
+mousemove,Page,2024-01-18T19:17:49.131Z,,,Chrome,120.0.0.0,4807.099999904633,1536,864,Unknown,"(None,)",http://127.0.0.1:5001/,2024-01-18T19:17:49.618Z,,False,False,False,False,663.0,58.0

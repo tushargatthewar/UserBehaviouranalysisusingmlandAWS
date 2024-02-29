@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Bhuvan Portal</title>
+    <style>
+        /* Existing styles... */
+
+        /* New styles for login page */
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .login-form {
+            width: 300px;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .login-form button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% if error %}
+    <div class="alert">{{ error }}</div>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li class="alert alert-{{ message[0] }}">{{ message[1] }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <header>
+        <h1>Bhuvan Portal</h1>
+    </header>
+
+
+   
+
+   
+
+    <!-- Admin Login Section -->
+    <div class="login-container" id="adminLoginContainer">
+        <h2>Admin Login</h2>
+        <form action="/login"  class="login-form" id="adminLoginForm" method="POST">
+            <input type="text" id="adminUsername" placeholder="Username" name="username" required>
+            <input type="password" id="adminPassword" placeholder="Password" name="password" required>
+            <input type="submit" value="Login">
+            
+        </form>
+    </div>
+
+    <!-- Existing content ... -->
+
+    <footer>
+        <!-- Existing footer content ... -->
+    </footer>
+
+    <script>
+        // Existing JavaScript code...
+
+        // Admin login function
+        function adminLogin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+
+            // Add your admin authentication logic here
+            if (username === 'admin' && password === 'adminpassword') {
+                console.log('Admin login successful');
+                // Perform admin-specific actions or redirect to admin panel
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</body>
+
+</html>
